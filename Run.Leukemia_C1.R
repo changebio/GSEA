@@ -2,16 +2,17 @@
 #
 # R script to run GSEA Analysis of the Leukemia ALL/AML vs C1 example (cut and paste into R console)
 
-GSEA.program.location <- "d:/CGP2005/GSEA/GSEA-P-R/GSEA.1.0.R"   #  R source program (change pathname to the rigth location in local machine)
+GSEA.program.location <- "~/rstudio1/proj/GSEA-P-R/GSEA.1.0.R" 
+#  R source program (change pathname to the rigth location in local machine)
 source(GSEA.program.location, verbose=T, max.deparse.length=9999)
 
 GSEA(                                                                    # Input/Output Files :-------------------------------------------
- input.ds =  "d:/CGP2005/GSEA/GSEA-P-R/Datasets/Leukemia.gct",           # Input gene expression Affy dataset file in RES or GCT format
- input.cls = "d:/CGP2005/GSEA/GSEA-P-R/Datasets/Leukemia.cls",           # Input class vector (phenotype) file in CLS format
- gs.db =     "d:/CGP2005/GSEA/GSEA-P-R/GeneSetDatabases/C1.gmt",         # Gene set database in GMT format
- output.directory      = "d:/CGP2005/GSEA/GSEA-P-R/Leukemia_C1/",        # Directory where to store output and results (default: "")
+ input.ds =  "~/rstudio1/proj/GSEA-P-R/Datasets/Leukemia.gct",           # Input gene expression Affy dataset file in RES or GCT format
+ input.cls = "~/rstudio1/proj/GSEA-P-R/Datasets/Leukemia.cls",           # Input class vector (phenotype) file in CLS format
+ gs.db =     "~/rstudio1/proj/GSEA-P-R/GeneSetDatabases/C1.gmt",         # Gene set database in GMT format
+ output.directory      = "~/rstudio1/proj/GSEA-P-R/Leukemia_C1/",        # Directory where to store output and results (default: "")
 #  Program parameters :-------------------------------------------------------------------------------------------------------------------------
- doc.string            = "Leukemia_C1",   # Documentation string used as a prefix to name result files (default: "GSEA.analysis")
+ doc.string            = "my_run_Leukemia_C1",   # Documentation string used as a prefix to name result files (default: "GSEA.analysis")
  non.interactive.run   = F,               # Run in interactive (i.e. R GUI) or batch (R command line) mode (default: F)
  reshuffling.type      = "sample.labels", # Type of permutation reshuffling: "sample.labels" or "gene.labels" (default: "sample.labels" 
  nperm                 = 1000,            # Number of random permutations (default: 1000)

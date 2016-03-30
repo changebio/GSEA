@@ -1622,7 +1622,7 @@ if (OLD.GSEA == F) {
        glob.p.vals.sorted <- signif(glob.p.vals.sorted, digits=5)
 
        report <- data.frame(cbind(gs.names, size.G, all.gs.descs, Obs.ES, Obs.ES.norm, p.vals[,1], FDR.mean.sorted, p.vals[,2], tag.frac, gene.frac, signal.strength, FDR.median.sorted, glob.p.vals.sorted))
-       names(report) <- c("GS", "SIZE", "SOURCE", "ES", "NES", "NOM p-val", "FDR q-val", "FWER p-val", "Tag \%", "Gene \%", "Signal", "FDR (median)", "glob.p.val")
+       names(report) <- c("GS", "SIZE", "SOURCE", "ES", "NES", "NOM p-val", "FDR q-val", "FWER p-val", "Tag p", "Gene p", "Signal", "FDR (median)", "glob.p.val")
 #       print(report)
        report2 <- report
        report.index2 <- order(Obs.ES.norm, decreasing=T)
@@ -1692,8 +1692,8 @@ if (output.directory != "")  {
 
      area.bias <- signif(100*(sum(obs.s2n[1:arg.correl]) + sum(obs.s2n[arg.correl:N]))/sum(abs(obs.s2n[1:N])), digits=3)
      area.phen <- ifelse(area.bias >= 0, phen1, phen2)
-     delta.string <- paste("Corr. Area Bias to \"", area.phen, "\" =", abs(area.bias), "\%", sep="", collapse="")
-     zero.crossing.string <- paste("Zero Crossing at location ", arg.correl, " (",  signif(100*arg.correl/N, digits=3), " \%)")
+     delta.string <- paste("Corr. Area Bias to \"", area.phen, "\" =", abs(area.bias), " p", sep="", collapse="")
+     zero.crossing.string <- paste("Zero Crossing at location ", arg.correl, " (",  signif(100*arg.correl/N, digits=3), " p)")
      leg.txt <- c(delta.string, zero.crossing.string)
      legend(x=N/10, y=max.corr, bty="n", bg = "white", legend=leg.txt, cex = 0.9)
 
@@ -2158,21 +2158,21 @@ GSEA.Analyze.Sets <- function(
    width = 17) {
 
    file.list <- list.files(directory)
-   files <- file.list[regexpr(pattern = "\.report\.", file.list) > 1]
+   files <- file.list[regexpr(pattern = ".report.", file.list) > 1]
    max.sets <- length(files)
 
    set.table <- matrix(nrow = max.sets, ncol = 5)
 
    for (i in 1:max.sets) {
-      temp1 <-  strsplit(files[i], split="\.report\.")
-      temp2 <-  strsplit(temp1[[1]][1], split="\\.")
+      temp1 <-  strsplit(files[i], split=".report.")
+      temp2 <-  strsplit(temp1[[1]][1], split="[.]")
       s <- length(temp2[[1]])
       prefix.name <- paste(temp2[[1]][1:(s-1)], sep="", collapse="")
       set.name <- temp2[[1]][s]
-      temp3 <-  strsplit(temp1[[1]][2], split="\\.")
+      temp3 <-  strsplit(temp1[[1]][2], split="[.]")
       phenotype <- temp3[[1]][1]
       seq.number <- temp3[[1]][2]
-      dataset <- paste(temp2[[1]][1:(s-1)], sep="", collapse="\.")
+      dataset <- paste(temp2[[1]][1:(s-1)], sep="", collapse=".")
 
       set.table[i, 1] <- files[i]
 
