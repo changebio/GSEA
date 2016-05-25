@@ -39,12 +39,12 @@ GSEA(                                                                    # Input
 # Overlap and leading gene subset assignment analysis of the GSEA results
 
 GSEA.Analyze.Sets(
-   directory           = "d:/CGP2005/GSEA/GSEA-P-R/Leukemia_C1/",        # Directory where to store output and results (default: "")
+   directory           = "~/rstudio1/proj/GSEA-P-R/Leukemia_C1/",        # Directory where to store output and results (default: "")
    topgs = 20,                                                           # number of top scoring gene sets used for analysis
    height = 16,
    width = 16
 )
-
+              
 
 
 

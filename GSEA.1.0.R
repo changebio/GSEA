@@ -319,6 +319,11 @@ GSEA.EnrichmentScore <- function(gene.list, gene.set, weighted.score.type = 1, c
       ES <- signif(min.ES, digits=5)
       arg.ES <- which.min(RES)
    }
+   print("test")
+   print(Ng)
+   print(min.ES)
+   print(max.ES)
+   
    return(list(ES = ES, arg.ES = arg.ES, RES = RES, indicator = tag.indicator))    
 }
 
